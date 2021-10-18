@@ -6,16 +6,16 @@
 /*   By: jde-alen <jde-alen@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 16:01:11 by jde-alen          #+#    #+#             */
-/*   Updated: 2021/10/17 21:20:14 by jde-alen         ###   ########.fr       */
+/*   Updated: 2021/10/17 21:23:20 by jde-alen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
-# define	GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-#include <unistd.h>
-#include <stdlib.h>
-#include <stdio.h>
+# include <unistd.h>
+# include <stdlib.h>
+# include <stdio.h>
 
 char	*get_next_line(int fd);
 

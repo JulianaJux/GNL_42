@@ -6,7 +6,7 @@
 /*   By: jde-alen <jde-alen@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/17 20:59:58 by jde-alen          #+#    #+#             */
-/*   Updated: 2021/10/17 21:15:45 by jde-alen         ###   ########.fr       */
+/*   Updated: 2021/10/17 21:21:39 by jde-alen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ char	*get_next_line(int fd)
 		ft_free(&res[fd]);
 		res[fd] = tmp;
 		if (ft_strchr(buff, '\n'))
-				break ;
+			break ;
 	}
 	ft_free(&buff);
 	if (b_read < 0 || (b_read == 0 && !res[fd]))
