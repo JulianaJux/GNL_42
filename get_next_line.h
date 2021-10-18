@@ -6,11 +6,11 @@
 /*   By: jde-alen <jde-alen@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 16:01:11 by jde-alen          #+#    #+#             */
-/*   Updated: 2021/10/17 20:58:47 by jde-alen         ###   ########.fr       */
+/*   Updated: 2021/10/17 21:20:14 by jde-alen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifdef GET_NEXT_LINE_H
+#ifndef GET_NEXT_LINE_H
 # define	GET_NEXT_LINE_H
 
 #include <unistd.h>

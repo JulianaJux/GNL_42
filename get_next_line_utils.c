@@ -6,7 +6,7 @@
 /*   By: jde-alen <jde-alen@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 16:01:00 by jde-alen          #+#    #+#             */
-/*   Updated: 2021/10/17 20:58:45 by jde-alen         ###   ########.fr       */
+/*   Updated: 2021/10/17 21:16:16 by jde-alen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ char	*ft_bzero(size_t size)
 	char	*j;
 	size_t	i;
 
-	j = (char *)malloc(sizeof(char) * (size +1));
+	j = (char *)malloc(sizeof(char) * (size + 1));
 	if (!j)
 		return (0);
 	i = 0;

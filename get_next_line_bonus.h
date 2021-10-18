@@ -6,12 +6,12 @@
 /*   By: jde-alen <jde-alen@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/17 21:00:43 by jde-alen          #+#    #+#             */
-/*   Updated: 2021/10/17 21:05:19 by jde-alen         ###   ########.fr       */
+/*   Updated: 2021/10/17 21:19:57 by jde-alen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifdef GET_NEXT_LINE_BONUS_H
-# define	GET_NEXT_LINE_BONUS_H
+#ifndef GET_NEXT_LINE_BONUS_H
+# define GET_NEXT_LINE_BONUS_H
 
 #include <unistd.h>
 #include <stdlib.h>
