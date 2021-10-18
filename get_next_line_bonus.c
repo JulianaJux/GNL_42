@@ -6,7 +6,7 @@
 /*   By: jde-alen <jde-alen@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/17 20:59:58 by jde-alen          #+#    #+#             */
-/*   Updated: 2021/10/17 21:04:20 by jde-alen         ###   ########.fr       */
+/*   Updated: 2021/10/17 21:10:44 by jde-alen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ static char *ft_get_the_line(char **str)
 
 char	*get_next_line(int fd)
 {
-	static char	*res;
+	static char	*res[1024];
 	char		*buff;
 	char		*tmp;
 	int			b_read;
@@ -94,16 +94,16 @@ char	*get_next_line(int fd)
 	while (ft_read (fd, &buff, &b_read) > 0)
 	{
 		buff[b_read] = 0;
-		if (!res)
-			res = ft_bzero(0)
-			tmp = ft_strcat(res, buff);
-			ft_free(&res);
-			res = tmp;
+		if (!res[fd])
+			res[fd] = ft_bzero(0)
+			tmp = ft_strcat(res[fd], buff);
+			ft_free(&res[fd]);
+			res[fd] = tmp;
 			if (ft_strchr(buff, '\n'))
 				break;
 	}
 	ft_free(&buff);
-	if (b_read < 0 || (b_read == 0 && !res))
+	if (b_read < 0 || (b_read == 0 && !res[fd]))
 		return (NULL);
-	return (ft_get_the_line(&res));
+	return (ft_get_the_line(&res[fd]));
 }
