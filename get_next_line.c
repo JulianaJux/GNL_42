@@ -6,7 +6,7 @@
 /*   By: jde-alen <jde-alen@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/23 16:19:27 by jde-alen          #+#    #+#             */
-/*   Updated: 2021/10/24 15:24:27 by jde-alen         ###   ########.fr       */
+/*   Updated: 2021/10/24 15:52:50 by jde-alen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,10 +71,15 @@ static char	*new_save(char *str)
 	j = 0;
 	while (str[j] != '\0' && str[j] != '\n')
 		j++;
+	if (str[j] == '\0')
+	{
+		free(str);
+		return (NULL);
+	}
 	new_save = (char *)malloc(sizeof(char) * (ft_strlen(str) - j + 1));
 	if (!new_save)
 		return (NULL);
-	ft_strlcpy(new_save, str + 1, ft_strlen(str) - j + 1);
+	ft_strlcpy(new_save, str + j + 1, ft_strlen(str) - j + 1);
 	free(str);
 	return (new_save);
 }
