@@ -6,7 +6,7 @@
 /*   By: jde-alen <jde-alen@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/23 16:19:27 by jde-alen          #+#    #+#             */
-/*   Updated: 2021/10/24 15:57:55 by jde-alen         ###   ########.fr       */
+/*   Updated: 2021/10/24 16:03:37 by jde-alen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ static char	*find_line(char *str)
 	char	*line;
 
 	j = 0;
-	if (!(str))
-		return (0);
-	while (*str != '\0' || *str != '\n')
+	if (!str)
+		return (NULL);
+	while (str[j] != '\0' && str[j] != '\n')
 		j++;
 	line = (char *)malloc(sizeof(char) * (j + 2));
 	if (!(line))
