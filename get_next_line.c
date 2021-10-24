@@ -6,7 +6,7 @@
 /*   By: jde-alen <jde-alen@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/23 16:19:27 by jde-alen          #+#    #+#             */
-/*   Updated: 2021/10/24 15:20:49 by jde-alen         ###   ########.fr       */
+/*   Updated: 2021/10/24 15:22:02 by jde-alen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,12 +81,12 @@ static char	*new_save(char *str)
 
 char	*get_next_line(int fd)
 {
-	static char *save_all;
+	static char	*save_all;
 	char		*line;
 	char		*file;
 
 	line = NULL;
-	if(fd < 0 || BUFFER_SIZE <= 0)
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	file = (char *)malloc(sizeof(char) * BUFFER_SIZE + 1);
 	if (!file)
