@@ -6,7 +6,7 @@
 /*   By: jde-alen <jde-alen@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/23 16:19:27 by jde-alen          #+#    #+#             */
-/*   Updated: 2021/10/24 15:52:50 by jde-alen         ###   ########.fr       */
+/*   Updated: 2021/10/24 15:57:55 by jde-alen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,28 @@ static char	*find_line(char *str)
 	return (line);
 }
 
+static char	*ft_strdup(const char *s1)
+{
+	char	*str;
+	size_t	len;
+	size_t	j;
+
+	if (!s1)
+		return (NULL);
+	len = ft_strlen(s1);
+	str = (char *)malloc(len + 1);
+	if (!str)
+		return (NULL);
+	j = 0;
+	while (j < len)
+	{
+		str[j] = s1[j];
+		j++;
+	}
+	str[len] = '\0';
+	return (str);
+}
+
 /*le e junta as linhas que li em um espaço*/
 static char	*read_and_join(int fd, char *str, char *space)
 {
@@ -53,6 +75,8 @@ static char	*read_and_join(int fd, char *str, char *space)
 			return (NULL);
 		}
 		space[reading] = '\0';
+		if (!str)
+			str = ft_strdup("");
 		tmp = str;
 		str = ft_strjoin(tmp, space);
 		free(tmp);
