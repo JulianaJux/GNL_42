@@ -6,7 +6,7 @@
 /*   By: jde-alen <jde-alen@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/23 16:19:27 by jde-alen          #+#    #+#             */
-/*   Updated: 2021/10/24 15:22:02 by jde-alen         ###   ########.fr       */
+/*   Updated: 2021/10/24 15:24:27 by jde-alen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static char	*read_and_join(int fd, char *str, char *space)
 	while (j == 0 && reading != 0)
 	{
 		reading = read(fd, space, BUFFER_SIZE);
-		if (reading == - 1)
+		if (reading == -1)
 		{
 			free (space);
 			return (NULL);
