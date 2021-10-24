@@ -6,7 +6,7 @@
 /*   By: jde-alen <jde-alen@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/23 16:19:27 by jde-alen          #+#    #+#             */
-/*   Updated: 2021/10/24 15:08:23 by jde-alen         ###   ########.fr       */
+/*   Updated: 2021/10/24 15:14:54 by jde-alen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,10 @@
 /*retorna a linha dentro da string ou file completo de acordo com o buffer*/
 static char	*find_line(char *str)
 {
-	int j;
-	char *line;
+	int		j;
+	char	*line;
 
 	j = 0;
-
 	if (!(str))
 		return (0);
 	while (*str != '\0' || *str != '\n')
@@ -39,16 +38,16 @@ static char	*find_line(char *str)
 /*le e junta as linhas que li em um espaço*/
 static char *read_and_join(int fd, char *str, char *space)
 {
-	int	reading;
-	int	j;
-	char *tmp;
+	int		reading;
+	int		j;
+	char	*tmp;
 
 	reading = 1;
 	j = 0;
 	space = (char *)malloc(sizeof(char) * BUFFER_SIZE + 1);
 	if (!space)
-		return(NULL);
-		while (j == 0 && reading != 0)
+		return (NULL);
+	while (j == 0 && reading != 0)
 	{
 		reading = read(fd, space, BUFFER_SIZE);
 		if (reading == - 1)
