@@ -6,15 +6,16 @@
 /*   By: jde-alen <jde-alen@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 16:48:25 by jde-alen          #+#    #+#             */
-/*   Updated: 2021/10/24 16:53:51 by jde-alen         ###   ########.fr       */
+/*   Updated: 2021/10/24 16:57:59 by jde-alen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H_BONUS
-# define GET_NEXT_LINE_H_BONUS
+#ifndef GET_NEXT_LINE_BONUS_H
+# define GET_NEXT_LINE_BONUS_H
 
 # include <unistd.h>
 # include <stdlib.h>
+# include <sys/resource.h>
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 42
