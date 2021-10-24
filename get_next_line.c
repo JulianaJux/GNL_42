@@ -6,14 +6,14 @@
 /*   By: jde-alen <jde-alen@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/23 16:19:27 by jde-alen          #+#    #+#             */
-/*   Updated: 2021/10/23 20:36:45 by jde-alen         ###   ########.fr       */
+/*   Updated: 2021/10/23 21:02:39 by jde-alen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
 /*retorna a linha dentro da string ou file completo de acordo com o buffer*/
-static char	find_line(char *str)
+static char	*find_line(char *str)
 {
 	int j;
 	char *line;
@@ -21,14 +21,14 @@ static char	find_line(char *str)
 	j = 0;
 
 	if (!(str))
-		return (NULL);
+		return (0);
 	while (*str != '\0' || *str != '\n')
 		j++;
 
-	line = (char *)malloc(size_of(char) * (j + 2));
+	line = (char *)malloc(sizeof(char) * (j + 2));
 	if (!(line))
 		return (NULL);
-	ft_strcpy(line, str, j + 2);
+	ft_strlcpy(line, str, j + 2);
 	if (line [0] == '\0')
 	{
 		free(line);
@@ -60,14 +60,14 @@ static char	*ft_strdup(const char *s1)
 }
 
 /*le e junta as linhas que li em um espaço*/
-static char read_and_join(int fd, char *str, char *space)
+static char *read_and_join(int fd, char *str, char *space)
 {
 	int	reading;
 	int j;
 	char *tmp;
 
-	reading = 1
-	j = 0
+	reading = 1;
+	j = 0;
 	space = (char *)malloc(sizeof(char) * BUFFER_SIZE + 1);
 	if (!space)
 		return(NULL); 	
@@ -79,13 +79,13 @@ static char read_and_join(int fd, char *str, char *space)
 			free(space);
 			return (NULL);
 		}
-		space[reading] = '\0'
+		space[reading] = '\0';
 		if (!str)
 			str = ft_strdup("");
 		tmp = str;
 		str = ft_strjoin(tmp, space);
 		free(tmp);
-		if(ft_strch(str, '\n'))
+		if(ft_strchr(str, '\n'))
 			j = 1;
 	}
 	free(space);
@@ -120,7 +120,7 @@ char	*get_next_line(int fd)
 	char		*file;
 
 	line = NULL;
-	if(fd < 0 || BUFFER_SIZE < = 0)
+	if(fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	file = malloc(sizeof(char) * BUFFER_SIZE + 1);
 	if (!file)
