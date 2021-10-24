@@ -6,7 +6,7 @@
 /*   By: jde-alen <jde-alen@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/23 16:19:27 by jde-alen          #+#    #+#             */
-/*   Updated: 2021/10/24 15:14:54 by jde-alen         ###   ########.fr       */
+/*   Updated: 2021/10/24 15:18:18 by jde-alen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static char	*find_line(char *str)
 }
 
 /*le e junta as linhas que li em um espaço*/
-static char *read_and_join(int fd, char *str, char *space)
+static char	*read_and_join(int fd, char *str, char *space)
 {
 	int		reading;
 	int		j;
@@ -44,9 +44,7 @@ static char *read_and_join(int fd, char *str, char *space)
 
 	reading = 1;
 	j = 0;
-	space = (char *)malloc(sizeof(char) * BUFFER_SIZE + 1);
-	if (!space)
-		return (NULL);
+
 	while (j == 0 && reading != 0)
 	{
 		reading = read(fd, space, BUFFER_SIZE);
@@ -59,7 +57,7 @@ static char *read_and_join(int fd, char *str, char *space)
 		tmp = str;
 		str = ft_strjoin(tmp, space);
 		free(tmp);
-		if(ft_strchr(str, '\n'))
+		if (ft_strchr(str, '\n'))
 			j = 1;
 	}
 	free(space);
@@ -90,6 +88,9 @@ char	*get_next_line(int fd)
 
 	line = NULL;
 	if(fd < 0 || BUFFER_SIZE <= 0)
+		return (NULL);
+	file = (char *)malloc(sizeof(char) * BUFFER_SIZE + 1);
+	if (!file)
 		return (NULL);
 	save_all = read_and_join(fd, save_all, file);
 	if (!save_all)
