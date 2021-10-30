@@ -6,7 +6,7 @@
 /*   By: jde-alen <jde-alen@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/23 16:19:27 by jde-alen          #+#    #+#             */
-/*   Updated: 2021/10/24 16:03:37 by jde-alen         ###   ########.fr       */
+/*   Updated: 2021/10/30 13:02:08 by jde-alen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,24 +18,24 @@ static char	*find_line(char *str)
 	int		j;
 	char	*line;
 
-	j = 0;
+	j = 0; /*controle de encontro de achar a linha*/
 	if (!str)
-		return (NULL);
-	while (str[j] != '\0' && str[j] != '\n')
+		return (NULL); /*proteção de ter mesmo a linha*/
+	while (str[j] != '\0' && str[j] != '\n') /*while de iteração enquanto não acha o quebra linha*/
 		j++;
-	line = (char *)malloc(sizeof(char) * (j + 2));
-	if (!(line))
+	line = (char *)malloc(sizeof(char) * (j + 2)); /*aloca memoria para o fim e o quebra linha*/
+	if (!(line)) /* proteção contra má alocação*/
 		return (NULL);
-	ft_strlcpy(line, str, j + 2);
-	if (line [0] == '\0')
+	ft_strlcpy(line, str, j + 2); /*copio dentro da linha, o que achei do tamanho de j + fim e quebra linha*/
+	if (line [0] == '\0') /*se no inicio já ser o fim*/
 	{
 		free(line);
-		return (NULL);
+		return (NULL); /*e dou free pra não manter alocado o que não precisa*/
 	}
-	return (line);
+	return (line); /*retorno a linha até /n*/
 }
 
-static char	*ft_strdup(const char *s1)
+static char	*ft_strdup(const char *s1) /*não coube na utils*/
 {
 	char	*str;
 	size_t	len;
@@ -66,28 +66,28 @@ static char	*read_and_join(int fd, char *str, char *space)
 
 	reading = 1;
 	j = 0;
-	while (j == 0 && reading != 0)
+	while (j == 0 && reading != 0) /*loop para manter lendo*/	
 	{
-		reading = read(fd, space, BUFFER_SIZE);
-		if (reading == -1)
+		reading = read(fd, space, BUFFER_SIZE); /*aplicação da read em si*/
+		if (reading == -1) /*proteção se a read der errado*/
 		{
 			free (space);
 			return (NULL);
 		}
-		space[reading] = '\0';
+		space[reading] = '\0'; /*adiciona dentro do espaço o nulo nos bytes lidos*/
 		if (!str)
-			str = ft_strdup("");
-		tmp = str;
-		str = ft_strjoin(tmp, space);
-		free(tmp);
-		if (ft_strchr(str, '\n'))
+			str = ft_strdup(""); /*proteção se não tiver mais o que ler*/
+		tmp = str; /*jogo com uma temporária*/
+		str = ft_strjoin(tmp, space); /*junta a temporaria que é str e o espaço que lemos*/
+		free(tmp); /*depois libera ela*/
+		if (ft_strchr(str, '\n')) /*condição pra sair é quando encontra \n*/
 			j = 1;
 	}
-	free(space);
-	return (str);
+	free(space); /*free o que armazenei que eu li*/
+	return (str); /*retorna a junção do que li e quanto li*/
 }
 
-static char	*new_save(char *str)
+static char	*new_save(char *str) /*novo backup, depois do /n*/
 {
 	int		j;
 	char	*new_save;
@@ -120,10 +120,10 @@ char	*get_next_line(int fd)
 	file = (char *)malloc(sizeof(char) * BUFFER_SIZE + 1);
 	if (!file)
 		return (NULL);
-	save_all = read_and_join(fd, save_all, file);
+	save_all = read_and_join(fd, save_all, file); /*leio e junto no espao*/
 	if (!save_all)
 		return (NULL);
-	line = find_line(save_all);
-	save_all = new_save(save_all);
-	return (line);
+	line = find_line(save_all); /*dentro do que li, acho a linha*/
+	save_all = new_save(save_all); /*salvo o que restou*/
+	return (line); /*retorno a linha*/
 }
